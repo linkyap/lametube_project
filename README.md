@@ -8,12 +8,11 @@ Please follow the instructions below and fill in the information requested when 
 
 ## Student Information
 
-|               | Information   |
-|:-------------:|:-------------:|
-| Student Name  | name-here     |
-| Student ID    | id-here       |
-| Student Email | email-here    |
-
+|               |     Information   |
+|:-------------:|   :-------------: |
+| Student Name  |   James Donnelly  |
+| Student ID    |     917703805     |
+| Student Email | jdonnelly@sfsu.edu|
 
 
 # Build/Run Instructions
