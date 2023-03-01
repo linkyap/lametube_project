@@ -18,5 +18,38 @@
                 <li><a href="viewpost.html">Browse Posts</a></li>
             </ul>
         </nav>
+        <main>
+            <h2>Registration Form</h2>
+            <form>
+                <label for="username">Create Username</label>
+                <input type="text" name="username" 
+                id="username" required placeholder="Enter here">
+
+                <label for="password">Create Password</label>
+                <input type="password" name="password" 
+                id="password" required placeholder="Password">
+
+                <label for ="confirm password">Confirm Password</label>
+                <input type="password" name="confirm password" 
+                id="confirm password" required placeholder="Confirm Password">
+
+                <label for ="email">Enter email</label>
+                <input type="email" name="email" 
+                id="email" required placeholder="Enter here">
+
+                <label for="ageOfConsent">Yes, I am 13+</label>
+                <input type="checkbox" name="ageOfConsent" 
+                id="ageOfConsent" required>
+
+                <label for="TOS & Privacy rules">Agree to the</label>
+                <a target="_blank" href="https://www.google.com" >
+                    TOS & Privacy rules
+                </a>
+                <input type="checkbox" name="TOS & Privacy rules" 
+                id="TOS & Privacy rules" required>
+
+                <input type="submit" value="Create account">
+            </form>
+        </main>
     </body>
 </html>
