@@ -1,8 +1,35 @@
+
+:root{
+
+}
+
+*,
+*::after,
+*::before{
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 100%;
+  font-family:Arial, Helvetica, sans-serif ;
+  background-color: antiquewhite;
+}
+
+
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #4c00ff;
+}
+
+
+.botm-footer{
+  color: antiquewhite;
+  background-color: black;
+  text-align: center;
 }
