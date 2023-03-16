@@ -15,13 +15,60 @@ html{
   background-color: antiquewhite;
 }
 
+nav ul{
+  display: grid;
+  grid-auto-flow: column;
 
+}
+
+ul li a{
+  text-decoration: none;
+  background: lightgoldenrodyellow;
+  border-radius: 4px;
+  padding: 15px 60px 15px 60px;
+}
+
+header{
+  text-align: center;
+  background-color: rgba(255, 132, 0, 0.903);
+  padding-bottom: 20px;
+}
 
 
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
 }
+
+ul{
+  flex-wrap: wrap;
+  font-size: large;
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 200px;
+
+}
+
+.input-text{
+text-align: center;
+}
+
+
+h2{
+  text-align: center;
+}
+
+form{
+  text-align: center;
+  padding: 8px;
+}
+
+
 
 a {
   color: #4c00ff;
@@ -30,6 +77,8 @@ a {
 
 .botm-footer{
   color: antiquewhite;
-  background-color: black;
+  background-color: rgba(255, 132, 0, 0.903);
   text-align: center;
+  padding: 18px;
+  
 }

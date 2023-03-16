@@ -11,7 +11,7 @@
         <header>
             <h1>CSC 317 Website</h1>
             <nav>
-                <ul>
+                <ul style="list-style: none;">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="login.html">Login</a></li>
                     <li><a href="postvideo.html">Create Post</a></li>
@@ -23,48 +23,48 @@
         </header>
         <main>
             <h2>Registration Form</h2>
-            <form>
-            <div>
-                <label for="username">Create Username</label>
-                <input type="text" name="username" 
-                id="username" required placeholder="Enter here">
-            </div>
+                <form>
+                    <div class="input-group">
+                        <label for="username">Create Username</label>
+                        <input class="input-text" type="text" name="username" 
+                        id="username" required placeholder="Enter here">
+                    </div>
 
-            <div>
-                <label for="password">Create Password</label>
-                <input type="password" name="password" 
-                id="password" required placeholder="Password">
-            </div>
+                    <div class="input-group">
+                        <label for="password">Create Password</label>
+                        <input class="input-text" type="password" name="password" 
+                        id="password" required placeholder="Password">
+                    </div>
 
-            <div>
-                <label for ="confirm password">Confirm Password</label>
-                <input type="password" name="confirm password" 
-                id="confirm password" required placeholder="Confirm Password">
-            </div>
+                    <div class="input-group">
+                        <label for ="confirm password">Confirm Password</label>
+                        <input class="input-text" type="password" name="confirm password" 
+                        id="confirm password" required placeholder="Confirm Password">
+                    </div>
 
-            <div>
-                <label for ="email">Enter email</label>
-                <input type="email" name="email" 
-                id="email" required placeholder="Enter here">
-            </div>
+                    <div class="input-group">
+                        <label for ="email">Enter email</label>
+                        <input class="input-text" type="email" name="email" 
+                        id="email" required placeholder="Enter here">
+                    </div>
 
-            <div>
-                <label for="ageOfConsent">Yes, I am 13+</label>
-                <input type="checkbox" name="ageOfConsent" 
-                id="ageOfConsent" required>
-            </div>
+                    <div class="checkbox">
+                        <label for="ageOfConsent">Yes, I am 13+</label>
+                        <input type="checkbox" name="ageOfConsent" 
+                        id="ageOfConsent" required>
+                    </div>
 
-            <div>
-                <label for="TOS & Privacy rules">Agree to the</label>
-                <a target="_blank" href="https://www.NOWHERE.com" >
-                    TOS & Privacy rules
-             </a>
-                <input type="checkbox" name="TOS & Privacy rules" 
-                id="TOS & Privacy rules" required>
-            </div>
+                    <div class="checkbox">
+                        <label for="TOS & Privacy rules">Agree to the</label>
+                        <a target="_blank" href="https://www.NOWHERE.com" >
+                            TOS & Privacy rules
+                    </a>
+                        <input type="checkbox" name="TOS & Privacy rules" 
+                        id="TOS & Privacy rules" required>
+                    </div>
 
-                <input type="submit" value="Create account">
-            </form>
+                    <input type="submit" value="Create account">
+                </form>
         </main>
 
         <footer class="botm-footer">
