@@ -22,6 +22,7 @@ nav ul{
 }
 
 ul li a{
+  flex-direction: column;
   text-decoration: none;
   background: lightgoldenrodyellow;
   border-radius: 4px;
@@ -41,31 +42,36 @@ body {
   margin: 0;
 }
 
-ul{
+ul {
   flex-wrap: wrap;
   font-size: large;
 }
+
+
 
 .input-group{
   display: flex;
   flex-direction: column;
   gap: 3px;
   width: 200px;
+  margin-left:43.5%;
 
 }
+
 
 .input-text{
-text-align: center;
-}
-
-
-h2{
   text-align: center;
-}
+  }
+
+
+  h2{
+    text-align: center;
+  }
 
 form{
   text-align: center;
   padding: 8px;
+  
 }
 
 
@@ -75,6 +81,7 @@ a {
 }
 
 
+
 .botm-footer{
   color: antiquewhite;
   background-color: rgba(255, 132, 0, 0.903);
@@ -82,3 +89,4 @@ a {
   padding: 18px;
   
 }
+
