@@ -6,6 +6,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <link rel="stylesheet" href="../css/style.css">
         <title>Home</title>
+
+        <style>
+      .photo-container {
+        display: inline-block;
+        width: 300px;
+        height: 350px;
+        margin: 10px;
+        text-align: center;
+      }
+      .photo-container img {
+        width: 100%;
+        height: 75%;
+        object-fit: cover;
+      }
+      .photo-container h3 {
+        margin-top: 10px;
+        font-size: 1.2rem;
+      }
+      #photos {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 80%;
+        margin: auto;
+      }
+      #photo-count {
+        text-align: center;
+      }
+    </style>
     </head>
     <body>
         <header>
@@ -40,11 +68,61 @@
                     Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. 
                     
                 </p>
-
+                <h1 id="photo-count"></h1>
+                <div id="photos"></div>
             </main>
 
             <footer class="botm-footer">
                 James Donnelly &copy; 2023 V.1
             </footer>
+
+        <script>
+            const photosDiv = document.getElementById("photos");
+      const photoCountDiv = document.getElementById("photo-count");
+      let photoCount = 0;
+
+      function removePhoto(photoContainer) {
+        photoContainer.style.opacity = 0;
+        setTimeout(() => {
+          photoContainer.remove();
+          photoCount--;
+          photoCountDiv.innerHTML = `Showing ${photoCount} photos`;
+        }, 1000);
+      }
+
+      function displayPhotos(photos) {
+        photos.forEach((photo) => {
+          const photoContainer = document.createElement("div");
+          photoContainer.classList.add("photo-container");
+
+          const img = document.createElement("img");
+          img.src = photo.url;
+          photoContainer.appendChild(img);
+
+          const title = document.createElement("h3");
+          title.innerHTML = photo.title;
+          photoContainer.appendChild(title);
+
+          photoContainer.onclick = () => {
+            removePhoto(photoContainer);
+          };
+
+          photosDiv.appendChild(photoContainer);
+          photoCount++;
+        });
+
+        photoCountDiv.innerHTML = `Showing ${photoCount} photos`;
+      }
+
+      fetch("https://jsonplaceholder.typicode.com/albums/2/photos")
+        .then((response) => response.json())
+        .then((data) => {
+          displayPhotos(data);
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        </script>
     </body>
 </html>
