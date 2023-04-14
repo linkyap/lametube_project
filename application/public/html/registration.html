@@ -1,80 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/style.css">
-        <script  defer src="../js/validation.js"></script>
-        <title>Registration</title>
-    </head>
-    <body>
-        <header>
-            <h1>CSC 317 Website</h1>
-            <nav>
-                <ul style="list-style: none;">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="postvideo.html">Create Post</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                    <li><a href="registration.html">Register</a></li>
-                    <li><a href="viewpost.html">Browse Posts</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <h2>Registration Form</h2>
-                <form id="registerr" class="form" method="post" onsubmit="return validation()">
-                    <div class="input-group">
-                        <label for="username">Create Username</label>
-                        <input class="input-text" type="text" name="username" 
-                        id="username"  required placeholder="Enter here">
-                        <small></small>
-                    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script  defer src="../js/validation.js"></script>
+    <title>Registration</title>
+    <style>
+      .form {
+        width: 80%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+      }
 
-                    <div class="input-group">
-                        <label for="password" for>Create Password</label>
-                        <input class="input-text" type="password" name="password" 
-                        id="password"  required placeholder="Password">
-                        <small></small>
-                    </div>
+      .input-text {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        font-size: 16px;
+      }
 
-                    <div class="input-group">
-                        <label for ="confirm password">Confirm Password</label>
-                        <input class="input-text" type="password" name="confirm password" 
-                        id="confirm password"  required placeholder="Confirm Password">
-                        <small></small>
-                    </div>
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
 
-                    <div class="input-group">
-                        <label for ="email">Enter email</label>
-                        <input class="input-text" type="email" name="email" 
-                        id="email" required placeholder="Enter here">
-                    </div>
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
 
-                    <div class="checkbox">
-                        <label for="ageOfConsent">Yes, I am 13+</label>
-                        <input type="checkbox" name="ageOfConsent" 
-                        id="ageOfConsent" required>
-                    </div>
+      #error {
+        color: red;
+        margin-top: 10px;
+      }
 
-                    <div class="checkbox">
-                        <label for="TOS & Privacy rules">Agree to the</label>
-                        <a target="_blank" href="https://www.NOWHERE.com" >
-                            TOS & Privacy rules
-                    </a>
-                        <input type="checkbox" name="TOS & Privacy rules" 
-                        id="TOS & Privacy rules" required>
-                    </div>
+      .checkbox label {
+        font-size: 14px;
+      }
 
-                    <input type="submit" value="Create account">
-                    <div id="error"></div>
-                </form>
-        </main>
+      .checkbox input {
+        margin-right: 5px;
+      }
+    </style>
+</head>
+<body>
+<header>
+    <h1>CSC 317 Website</h1>
+    <nav>
+        <ul style="list-style: none;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="postvideo.html">Create Post</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="registration.html">Register</a></li>
+            <li><a href="viewpost.html">Browse Posts</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h2>Registration Form</h2>
+    <form id="registerr" class="form" method="post" onsubmit="return validation()">
+        <div class="input-group">
+            <label for="username">Create Username</label>
+            <input class="input-text" type="text" name="username"
+                   id="username"  required placeholder="Enter here">
+            <small></small>
+        </div>
 
-        <footer class="botm-footer">
-            James Donnelly &copy; 2023 V.1
-        </footer>
+        <div class="input-group">
+            <label for="password" for>Create Password</label>
+            <input class="input-text" type="password" name="password"
+                   id="password"  required placeholder="Password">
+            <small></small>
+        </div>
 
-    </body>
+        <div class="input-group">
+            <label for ="confirm password">Confirm Password</label>
+            <input class="input-text" type="password" name="confirm password"
+                   id="confirm password"  required placeholder="Confirm Password">
+            <small></small>
+        </div>
+
+        <div class="input-group">
+            <label for ="email">Enter email</label>
+            <input class="input-text" type="email" name="email"
+                   id="email" required placeholder="Enter here">
+        </div>
+
+        <div class="checkbox">
+            <label for="ageOfConsent">Yes, I am 13+</label>
+            <input type="checkbox" name="ageOfConsent"
+                   id="ageOfConsent" required>
+        </div>
+
+        <div class="checkbox">
+            <label for="TOS & Privacy rules">Agree to the</label>
+            <a target="_blank" href="https://www.NOWHERE.com" >
+                TOS & Privacy rules
+            </a>
+            <input type="checkbox" name="TOS & Privacy rules"
+                   id="TOS & Privacy rules" required>
+        </div>
+
+        <input type="submit" value="Create account">
+        <div id="error"></div>
+    </form>
+</main>
+
+<footer class="botm-footer">
+   James Donnelly &copy; 2023 V.1
+</footer>
+
+</body>
 </html>

@@ -1,5 +1,5 @@
 function validation(){
-	let regex = /[^a-z]/gi;
+
 	let specialChars = /[!@#$^&*+\-\[\]\/~]/;
 	let username = document.getElementById("username").value;
 	let password = document.getElementById("password").value;
