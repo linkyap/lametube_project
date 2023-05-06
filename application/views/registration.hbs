@@ -1,0 +1,46 @@
+<main class="main-content">
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form id="registerr" class="form" method="post" onsubmit="return validation()">
+            <div class="input-group">
+                <label for="username">Create Username</label>
+                <input class="input-text" type="text" name="username" id="username" required placeholder="Enter here">
+                <small></small>
+            </div>
+
+            <div class="input-group">
+                <label for="password" for>Create Password</label>
+                <input class="input-text" type="password" name="password" id="password" required placeholder="Password">
+                <small></small>
+            </div>
+
+            <div class="input-group">
+                <label for="confirm password">Confirm Password</label>
+                <input class="input-text" type="password" name="confirm password" id="confirm password" required
+                    placeholder="Confirm Password">
+                <small></small>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Enter email</label>
+                <input class="input-text" type="email" name="email" id="email" required placeholder="Enter here">
+            </div>
+
+            <div class="checkbox">
+                <label for="ageOfConsent">Yes, I am 13+</label>
+                <input type="checkbox" name="ageOfConsent" id="ageOfConsent" required>
+            </div>
+
+            <div class="checkbox">
+                <label for="TOS & Privacy rules">Agree to the</label>
+                <a target="_blank" href="https://www.NOWHERE.com">
+                    TOS & Privacy rules
+                </a>
+                <input type="checkbox" name="TOS & Privacy rules" id="TOS & Privacy rules" required>
+            </div>
+
+            <input type="submit" value="Create account">
+            <div id="error"></div>
+        </form>
+    </div>
+</main>

@@ -5,6 +5,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const handlebars = require("express-handlebars");
+
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 
@@ -17,7 +18,11 @@ app.engine(
     partialsDir: path.join(__dirname, "views/partials"), // where to look for partials
     extname: ".hbs", //expected file extension for handlebars files
     defaultLayout: "layout", //default layout for app, general template for all pages in app
-    helpers: {}, //adding new helpers to handlebars for extra functionality
+    helpers: {
+      isEmptyObject: function(obj){
+        
+      }
+    }, //adding new helpers to handlebars for extra functionality
   })
 );
 
