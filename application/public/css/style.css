@@ -83,6 +83,22 @@ h2{
   text-align: center;
 }
 
+.Comment [type="text"]{padding: 12px;
+  margin-top: 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  float: none;
+  display: inline-block;
+  text-align: center;
+  width: 25%;
+  margin: 0;
+}
+.Comment{
+  font-size: 15px;
+}
+
+
 .botm-footer{
   color: antiquewhite;
   background-color: rgba(255, 132, 0, 0.903);
