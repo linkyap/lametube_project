@@ -1,0 +1,67 @@
+<div class="dropdown-menu-nobs">
+
+    <div class="nav-user">Hi, {{user.username}}</div>
+
+    <div class="dropdown-menu-items">
+        <a class="proifle" href="/users/profile/{{user.userId}}">
+            Profile
+        </a>
+        <form action="/users/logout" method="post">
+            <input type="hidden" value="{{csrf}}">
+            <button class="nav-items" type="submit">Log out</button>
+        </form>
+    </div>
+    
+</div>
+
+<style>
+    
+</style>
+
+{{!-- <style>
+        .dropdown-menu-nobs {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu-items {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            top: 40px;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+
+        .nav-user {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .nav-items {
+            display: block;
+            font-size: 14px;
+            color: #333;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-items:hover {
+            text-decoration: underline;
+            background-color;
+        }
+
+        .dropdown-menu-nobs:hover .dropdown-menu-items {
+            display: block;
+        }
+    </style> --}}

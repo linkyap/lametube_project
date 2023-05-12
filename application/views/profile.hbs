@@ -1,17 +1,21 @@
 <main class="main-content">
     <div class="container">
         <h2>Profile Information</h2>
-        <form>
 
-            <label for="users username">User's Username</label>
-            <p type="text" name="users username" id="users username"></p>
 
-            <label for="users usersemail">User's Email</label>
-            <p type="text" name="users useremail" id="users useremail"></p>
+        <label for="users username">Username: {{user.username}}</label>
+        <p type="text" name="username" id="users username"></p>
 
-            <label for="Your Post Created">Your Posts</label>
-            <p type="text" name="Your Post Created" id="Your Post Created"></p>
-        </form>
+        <label for="users usersemail">User's Email: {{user.email}}</label>
+        <p type="text" name="email" id="users useremail"></p>
+
+
+
     </div>
+
+    <section class="profileVids">
+        <label for="Your Post">Your Posts</label>
+        <p type="text" name="Your Posts" id="Your Post"></p>
+    </section>
 
 </main>

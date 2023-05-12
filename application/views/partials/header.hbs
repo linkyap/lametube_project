@@ -5,8 +5,13 @@
             <li><a href="/">Home</a></li>
             <li><a href="postvideo">Create Post</a></li>
             <li><a href="viewpost">Browse Posts</a></li>
+            {{#if isLoggedIn}}
+            {{> userdropdown}}
+            {{!-- <li><a href="profile">Profile</a></li>      appears to be no longer needed--}}
+            {{else}}
             <li><a href="login">Login</a></li>
-            <li><a href="profile">Profile</a></li>
+            {{/if}}
+            
         </ul>
         <div class="topnav">
             <input type="text" placeholder="Search.." name="search">
