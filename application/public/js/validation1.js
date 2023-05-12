@@ -2,7 +2,7 @@ function validation1() {
 	const specialChars = /[!@#$^&*+\-\[\]\/~]/;
 	const usernameInput = document.getElementById("username");
 	const passwordInput = document.getElementById("password");
-	const confirmPasswordInput = document.getElementById("confirm-password");
+	const confirmPasswordInput = document.getElementById("confirmPassword");
 	const errorElement = document.getElementById("error");
   
 	const validateUsername = () => {

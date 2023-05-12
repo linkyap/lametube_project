@@ -8,12 +8,12 @@ const { isUsernameUnique, usernameCheck, passwordCheck, emailCheck, tosCheck, ag
 // localhost:3000/users/register 
 router.post('/registration', 
 usernameCheck,
-// passwordCheck,
-// emailCheck,
-// tosCheck,
-// ageCheck,
-// isUsernameUnique,
-// isEmailUnique,
+passwordCheck,
+emailCheck,
+tosCheck,
+ageCheck,
+isUsernameUnique,
+isEmailUnique,
   async function (req, res, next) {
     var { username, email, password } = req.body;
     //check username unique
@@ -104,9 +104,7 @@ router.use(function (req, res, next) {
   }
 })
 
-
-
-router.get('/profile/:id(\\d+)', isMyProfile, function (req, res) {
+router.get('/profile/:id(\\d+)', isLoggedIn, isMyProfile, function (req, res) {
   res.render('profile', { title: 'Profile page' });
 })
 
