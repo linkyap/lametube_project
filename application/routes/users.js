@@ -2,47 +2,58 @@ var express = require('express');
 var router = express.Router();
 var db = require('../conf/database');
 var bcrypt = require('bcrypt');
-
+var { isLoggedIn, isMyProfile } = require("../middleware/auth.js")
+const { isUsernameUnique, usernameCheck, passwordCheck, emailCheck, tosCheck, ageCheck, isEmailUnique } = require('../middleware/validation')
 
 // localhost:3000/users/register 
-router.post('/registration', async function (req, res, next) {
-  var { username, email, password } = req.body;
-  //check username unique
+router.post('/registration', 
+usernameCheck,
+// passwordCheck,
+// emailCheck,
+// tosCheck,
+// ageCheck,
+// isUsernameUnique,
+// isEmailUnique,
+  async function (req, res, next) {
+    var { username, email, password } = req.body;
+    //check username unique
 
-  try {
-    var [rows, fields] = await db.execute(`select id from users 
-    where username=?;`, [username]);
-    if (rows && rows.length > 0) {
-      return res.redirect('/registration');
-    }
+    try {
 
-    //check email unique
-    var [rows, fields] = await db.execute(`select id from users 
-    where email=?;`, [email]);
-    if (rows && rows.length > 0) {
-      return res.redirect('/registration');
-    }
 
-    var hashedPassword = await bcrypt.hash(password, 5);
+      //check email unique
 
-    //insert
-    var [resultObject, fields] = await db.execute(
-      `INSERT INTO users
+
+      var hashedPassword = await bcrypt.hash(password, 5);
+
+      //insert
+      var [resultObject, fields] = await db.execute(
+        `INSERT INTO users
     (username,email,password)
      value
     (?,?,?);`, [username, email, hashedPassword]);
 
-    //respond  
-    if (resultObject && resultObject.affectedRows == 1) {
-      return res.redirect('/login');
-    } else {
-      return res.redirect("/registration")
-    }
+      //respond  
+      if (resultObject && resultObject.affectedRows == 1) {
+        req.flash("success", `${username}'s account has been created`);
+        return req.session.save(function (err) {
+          return res.redirect('/login');
+        })
+      } else {
+        req.flash("error", `${username}'s account could not be created. 
+      Please try again later`
+        );
+        return req.session.save(function (err) {
+          return res.redirect("/registration");
+        }
 
-  } catch (error) {
-    next(error);
-  }
-});
+        )
+      }
+
+    } catch (error) {
+      next(error);
+    }
+  });
 
 // localhost:3000/users/login
 router.post('/login', async function (req, res, next) {
@@ -93,7 +104,9 @@ router.use(function (req, res, next) {
   }
 })
 
-router.get('/profile/:id(\\d+)', function (req, res) {
+
+
+router.get('/profile/:id(\\d+)', isMyProfile, function (req, res) {
   res.render('profile', { title: 'Profile page' });
 })
 
