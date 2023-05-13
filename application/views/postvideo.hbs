@@ -1,17 +1,33 @@
 <main class="main-content">
     <div class="container">
         <h2> Upload Video </h2>
-        <form class="form">
+        <form class="form"
+        action="/posts/create"
+        method="POST"
+        enctype="multipart/form-data">
 
             <label for="Title">Title</label>
-            <input class="input-text" type="text" name="Title" id="Title" placeholder="Enter Video Title Here" required>
+            <input class="input-text" 
+            type="text" 
+            name="Title" 
+            id="Title" 
+            placeholder="Enter Video Title Here" 
+            required>
 
             <label for="Description">Description</label>
-            <input class="input-text" type="text" name="Description" id="Description"
-                placeholder="Enter Video Description">
+            <input class="input-text" 
+            type="text" 
+            name="Description" 
+            id="Description"
+            placeholder="Enter Video Description">
 
-            <label for="Upload">Upload Video</label>
-            <input class="input-text" type="file" name="Upload" id="Upload" placeholder="Upload Here" required>
+            <label for="uploadVideo">Upload Video</label>
+            <input class="input-text" 
+            type="file" 
+            name="uploadVideo" 
+            id="uploadVideo" 
+            placeholder="Upload Here" 
+            required>
 
             <label for="Acceptable Use Policy">Agree to the</label>
             <a target="_blank" href="https://www.NOWHERE2.com">

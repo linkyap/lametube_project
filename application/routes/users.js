@@ -13,7 +13,7 @@ emailCheck,
 tosCheck,
 ageCheck,
 isUsernameUnique,
-isEmailUnique,
+// isEmailUnique,
   async function (req, res, next) {
     var { username, email, password } = req.body;
     //check username unique
