@@ -97,20 +97,22 @@ module.exports = {
 
 
     isEmailUnique: async function (req, res, next) {
-        var { email } = req.body;
+        var {email} = req.body;
         try {
-            var [rows, fields] = await db.execute(
+            [rows, fields] = await db.execute(
                 `select id from users where email=?;`,
                 [email]
             );
-            if (rows && rows.length > 0) {
+            if(rows && rows.length > 0){
                 req.flash("error", `${email} is already taken`);
-                return req.session.save(function (err) {
-                    return res.redirect('/registration');
-                })
+                return req.session.save(function (err){
+                    return res.redirect("/registration");
+                });
+            } else {
+                next();
             }
         } catch (error) {
-            next(error);
+            next(error)
         }
 
     }

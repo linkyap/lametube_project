@@ -13,7 +13,7 @@ emailCheck,
 tosCheck,
 ageCheck,
 isUsernameUnique,
-// isEmailUnique,
+isEmailUnique,
   async function (req, res, next) {
     var { username, email, password } = req.body;
     //check username unique
@@ -31,7 +31,9 @@ isUsernameUnique,
         `INSERT INTO users
     (username,email,password)
      value
-    (?,?,?);`, [username, email, hashedPassword]);
+    (?,?,?);`, 
+    [username, email, hashedPassword]
+    );
 
       //respond  
       if (resultObject && resultObject.affectedRows == 1) {
