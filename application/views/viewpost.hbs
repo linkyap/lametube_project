@@ -1,4 +1,17 @@
 <main class="main-content">
+    <video class="video-container" controls>
+        <source src="{{}}" type="video/mp4"/>
+    </video>
+    <div class ="post-info">
+        <h2 class="post-title">sample data for title</h2>
+        <div class="post-author-date">
+            <p class="author"> sample author name</p>
+            <p class="date-posted">jan 1 2024</p>
+        </div>
+        <p class="post-description">
+            Sample data for description
+        </p>
+    </div>
     <div class="comments">
         {{#each currentPost.comments}}
        <div class="comment">
