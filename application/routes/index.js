@@ -31,9 +31,7 @@ router.get('/postvideo', function(req, res){
 
 
 
-router.get('/viewpost', function(req,res){
-  res.render('viewpost', { title: 'Posts', css:["form.css"]});
-})
+
  
 router.get('/registration', function(req,res){
   res.render('registration', { title: 'Registration form',  js:["validation1.js"], css:["form.css"] });

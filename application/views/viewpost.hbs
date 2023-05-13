@@ -1,16 +1,13 @@
 <main class="main-content">
-    <div class="container">
-        <p type="text">Your Posts</p>
+    <div class="comments">
+        {{#each currentPost.comments}}
+       <div class="comment">
+        <strong class = "comment-author"></strong>
+        <span class="comment-date"></span>
+        <div class="comment-text"></div>
+        {{/each}}
 
-
-        <p type="text" name="Author">Author</p>
-
-
-
-        <p type="text" name="Creation Time">Creation Time</p>
-
-
-        <p type="text" name="Video Title">Video Title</p>
+       </div>
 
         <form class="Comment">
 

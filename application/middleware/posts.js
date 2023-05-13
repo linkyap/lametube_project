@@ -18,5 +18,13 @@ module.exports = {
                 next(error);
             }
         }
-    }
+    },
+    getPostsForUserBy: function(req,res,next){},
+    getPostById: function(req,res,next){
+        res.locals.currentPost = rows[0]
+    },
+    getCommentsForPostById: function(req,res,next){
+        res.locals.currentPost.comments = rows; 
+    },
+    getRecentPosts: function(req,res,next){},
 };
