@@ -1,6 +1,7 @@
 <div class="dropdown-menu-nobs">
 
-    <div class="nav-user">Hi, {{user.username}}</div>
+    <div class="nav-user"> Hi,  {{user.username}} <i class="fa fa-user" aria-hidden="true"></i>
+</div>
 
     <div class="dropdown-menu-items">
         <a class="proifle" href="/users/profile/{{user.userId}}">
@@ -8,15 +9,11 @@
         </a>
         <form action="/users/logout" method="post">
             <input type="hidden" value="{{csrf}}">
-            <button class="nav-items" type="submit">Log out</button>
+            <button class="nav-items" type="submit">Log out <i class="fa fa-sign-in" aria-hidden="true"></i></button>
         </form>
     </div>
     
 </div>
-
-<style>
-    
-</style>
 
 {{!-- <style>
         .dropdown-menu-nobs {

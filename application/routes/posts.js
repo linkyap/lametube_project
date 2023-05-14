@@ -32,7 +32,7 @@ router.post("/create",
         var { userId } = req.session.user;
 
         try {
-            var [insertResult, _ ] = await db.execute(
+            var [insertResult, _] = await db.execute(
                 `INSERT INTO posts (title, description, video, thumbnail,fk_userId) 
                 VALUES (?,?,?,?,?);`,
                 [Title, Description, path, thumbnail, userId]
@@ -55,14 +55,31 @@ router.post("/create",
 );
 
 
-router.get('/:id(\\d+)', function(req,res){
-    res.render('viewpost', { title: 'Posts', css:["form.css"]});
-  })
+router.get('/:id(\\d+)', async function (req, res) {
+    try {
+      var [rows, fields] = await db.execute(
+        `SELECT id, title, description, video, thumbnail FROM posts WHERE id = ?;`,
+        [req.params.id]
+      );
+      var post = rows[0];
+      if (!post) {
+        req.flash("error", `Post not found`);
+        req.session.save(function (err) {
+          return res.redirect('/');
+        });
+      } else {
+        res.render('viewpost', { title: post.title, post: post, css: ["form.css"] });
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Server error");
+    }
+  });
 
-router.get("/search", function(req,res,next){
+router.get("/search", function (req, res, next) {
 
 });
-router.delete("/delete", function(req,res,next){
+router.delete("/delete", function (req, res, next) {
 
 });
 module.exports = router;

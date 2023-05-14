@@ -1,0 +1,38 @@
+.post-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 45px;
+}
+
+.post-thumbnail {
+  flex-basis: calc(25% - 10px);
+  margin: 0 5px;
+}
+
+@media only screen and (max-width: 850px) {
+  .post-thumbnails {
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  }
+
+  .post-thumbnail {
+    flex-basis: auto;
+    margin: 10px 5px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .post-thumbnails {
+    display:block;
+  
+    flex-wrap: none;
+  }
+
+  .post-thumbnail {
+    
+    display:none
+  }
+}

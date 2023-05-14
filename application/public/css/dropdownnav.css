@@ -13,7 +13,8 @@
 }
 
 .nav-user:hover {
-    background-color: #e0e0e0;
+	background-color: #fafad2;
+	border-radius: 20px;
 }
 
 .dropdown-menu-items {

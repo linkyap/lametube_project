@@ -1,4 +1,5 @@
 var express = require('express');
+const { isLoggedIn } = require('../middleware/auth');
 var router = express.Router();
 
 /* GET home page. */
@@ -24,7 +25,7 @@ router.get('/login', function(req,res){
 //   }
 // })
 
-router.get('/postvideo', function(req, res){
+router.get('/postvideo', isLoggedIn, function(req, res){
   res.render('postvideo',{ title: 'Post Video', css:["form.css"] })
 })
 

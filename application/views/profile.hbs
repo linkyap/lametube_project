@@ -2,20 +2,35 @@
     <div class="container">
         <h2>Profile Information</h2>
 
-
         <label for="users username">Username: {{user.username}}</label>
         <p type="text" name="username" id="users username"></p>
 
         <label for="users usersemail">User's Email: {{user.email}}</label>
         <p type="text" name="email" id="users useremail"></p>
 
-
-
     </div>
+
+    {{!-- <section class="profileVids">
+        <label for="Your Post">Your Posts</label>
+        <p type="text" name="Your Posts" id="Your Post"></p>
+
+        {{#each posts}}
+        <video class="video-container" controls>
+            <source src="/{{this.video}}" type="video/mp4" />
+        </video>
+        {{/each}}
+    </section> --}}
 
     <section class="profileVids">
         <label for="Your Post">Your Posts</label>
         <p type="text" name="Your Posts" id="Your Post"></p>
+        <div class="post-thumbnails">
+            {{#each posts}}
+            <a href="/{{this.video}}" target="_blank">
+                <img src="/{{this.thumbnail}}" alt="{{this.title}}">
+                <p class="thumbnailTitle">{{this.title}}</p>
+            </a>
+            {{/each}}
+        </div>
     </section>
-
 </main>

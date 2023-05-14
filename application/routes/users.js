@@ -106,9 +106,27 @@ router.use(function (req, res, next) {
   }
 })
 
-router.get('/profile/:id(\\d+)', isLoggedIn, isMyProfile, function (req, res) {
-  res.render('profile', { title: 'Profile page' });
-})
+router.get('/profile/:id(\\d+)', isLoggedIn, isMyProfile, async function (req, res) {
+  try {
+    var [posts, fields] = await db.execute(
+      `SELECT id, title, description, video, thumbnail FROM posts WHERE fk_userId = ?;`,
+      [req.params.id]
+    );
+    if (posts.length === 0) {
+      req.flash("error", `No posts available`);
+    }
+    res.render('profile', { title: 'Profile page', posts: posts, css: ["thumbnailLink.css"]  });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
+//if i have time come back to
+// router.post('/profile/update', isLoggedIn, function(req,res){
+//   // update user information in database
+//   res.redirect('/profile');
+//   })
 
 router.post('/logout', function (req, res, next) {
   req.session.destroy(function (err) {

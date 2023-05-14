@@ -68,9 +68,12 @@ ul {
   flex-wrap: wrap;
   font-size: large;
 }
+ul li{
+  flex-direction: column;
+}
 
 ul li a{
-  flex-direction: column;
+  
   text-decoration: none;
   background: lightgoldenrodyellow;
   border-radius: 50px;
