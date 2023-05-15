@@ -1,33 +1,32 @@
 <main class="main-content">
-    <video class="video-container" controls>
-        <source src="/{{post.video}}" type="video/mp4"/>
-    </video>
-    <div class ="post-info">
-        <h2 class="post-title">sample data for title</h2>
-        <div class="post-author-date">
-            <p class="author"> sample author name</p>
-            <p class="date-posted">jan 1 2024</p>
-        </div>
-        <p class="post-description">
-            Sample data for description
-        </p>
+  <video class="video-container" controls>
+    <source src="/{{post.video}}" type="video/mp4" />
+  </video>
+  <div class="post-info">
+    <h2 class="post-title">{{post.title}}</h2>
+    <div class="post-author-date">
+      <strong class="author">{{user.username}}</strong>
+      <p class="date-posted">{{post.createdAt}}</p>
     </div>
-    <div class="comments">
-        {{#each currentPost.comments}}
-       <div class="comment">
-        <strong class = "comment-author"></strong>
-        <span class="comment-date"></span>
-        <div class="comment-text"></div>
-        {{/each}}
-
-       </div>
-
-        <form class="Comment">
-
-            <label for="Comment">Comment</label>
-            <input type="text" name="Comment" id="Comment" placeholder="Enter Comment Here">
-
-            <input type="submit" value="Submit Comment">
-        </form>
+    <p class="post-description">
+      {{post.description}}
+    </p>
+  </div>
+  <div class="comments">
+    {{#each post.comments}}
+    <div class="comment">
+      <strong class="comment-author">{{this.author}}</strong>
+      <span class="comment-date">{{this.createdAt}}</span>
+      <div class="comment-text">{{this.text}}</div>
     </div>
+    {{/each}}
+
+    <form class="Comment" action="/posts/{{post.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+
+      <label for="Comment">Comment</label>
+      <input type="text" name="comment" id="Comment" placeholder="Enter Comment Here">
+
+      <input type="submit" value="Submit Comment">
+    </form>
+  </div>
 </main>

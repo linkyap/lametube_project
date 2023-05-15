@@ -19,12 +19,55 @@ module.exports = {
             }
         }
     },
-    getPostsForUserBy: function(req,res,next){},
-    getPostById: function(req,res,next){
-        res.locals.currentPost = rows[0]
+
+
+
+
+   getPostsForUserBy: async function (req, res, next) {
+        try {
+            var [rows, fields] = await db.execute(
+                `SELECT id, title, description, video, thumbnail, createdAt FROM posts WHERE fk_userId = ? ORDER BY createdAt DESC;`,
+                [req.params.userId]
+            );
+            res.locals.posts = rows;
+            next();
+        } catch (error) {
+            next(error);
+        }
     },
-    getCommentsForPostById: function(req,res,next){
-        res.locals.currentPost.comments = rows; 
+    getPostById: async function (req, res, next) {
+        try {
+            var [rows, fields] = await db.execute(
+                `SELECT id, title, description, video, thumbnail, createdAt FROM posts WHERE id = ?;`,
+                [req.params.id]
+            );
+            res.locals.currentPost = rows[0];
+            next();
+        } catch (error) {
+            next(error);
+        }
     },
-    getRecentPosts: function(req,res,next){},
+    getCommentsForPostById: async function (req, res, next) {
+        try {
+            var [rows, fields] = await db.execute(
+                `SELECT id, text, createdAt FROM comments WHERE fk_postId = ? ORDER BY createdAt DESC;`,
+                [req.params.id]
+            );
+            res.locals.currentPost.comments = rows;
+            next();
+        } catch (error) {
+            next(error);
+        }
+    },
+    getRecentPosts: async function (req, res, next) {
+        try {
+            var [rows, fields] = await db.execute(
+                `SELECT id, title, description, video, thumbnail, createdAt FROM posts ORDER BY createdAt DESC LIMIT 10;`,
+            );
+            res.locals.recentPosts = rows;
+            next();
+        } catch (error) {
+            next(error);
+        }
+    },
 };

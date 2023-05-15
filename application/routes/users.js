@@ -112,15 +112,17 @@ router.get('/profile/:id(\\d+)', isLoggedIn, isMyProfile, async function (req, r
       `SELECT id, title, description, video, thumbnail FROM posts WHERE fk_userId = ?;`,
       [req.params.id]
     );
-    if (posts.length === 0) {
-      req.flash("error", `No posts available`);
-    }
+    
     res.render('profile', { title: 'Profile page', posts: posts, css: ["thumbnailLink.css"]  });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
   }
 });
+
+router.get('/profile/postvideo', isLoggedIn, function(req, res){
+  res.render('postvideo',{ title: 'Post Video', css:["form.css"] })
+})
 
 //if i have time come back to
 // router.post('/profile/update', isLoggedIn, function(req,res){

@@ -7,15 +7,17 @@
             {{!-- <li><a href="viewpost">Browse Posts</a></li> --}}
             {{#if isLoggedIn}}
             {{> userdropdown}}
-            {{!-- <li><a href="profile">Profile</a></li>      appears to be no longer needed--}}
+            {{!-- <li><a href="profile">Profile</a></li> appears to be no longer needed--}}
             {{else}}
             <li><a href="login">Login<i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
             {{/if}}
-            
+
         </ul>
         <div class="topnav">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <form action="/posts/search" method="GET" enctype="application/x-www-form-urlencoded">
+                <input type="text" placeholder="Search.." name="q">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
         </div>
     </nav>
 </header>

@@ -86,20 +86,7 @@ h2{
   text-align: center;
 }
 
-.Comment [type="text"]{padding: 12px;
-  margin-top: 8px;
-  font-size: 14px;
-  border: none;
-  border-radius: 20px;
-  float: none;
-  display: inline-block;
-  text-align: center;
-  width: 25%;
-  margin: 0;
-}
-.Comment{
-  font-size: 15px;
-}
+
 
 
 .botm-footer{
@@ -129,3 +116,16 @@ h2{
 }
 
 
+.btn-delete {
+  background-color: red;
+  color: white;
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: darkred;
+}
