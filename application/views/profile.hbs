@@ -15,7 +15,7 @@
         <p type="text" name="Your Posts" id="Your Post"></p>
         <div id="postThumbnails" class="post-thumbnails"> 
             {{#each posts}}
-            <a href="/{{this.video}}" target="_blank">
+            <a href="/posts/{{this.id}}" target="_self">
                 <img src="/{{this.thumbnail}}" alt="{{this.title}}">
                 <p class="thumbnailTitle">{{this.title}}</p>
             </a>

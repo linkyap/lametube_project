@@ -13,20 +13,22 @@
     </p>
   </div>
   <div class="comments">
-    {{#each post.comments}}
-    <div class="comment">
-      <strong class="comment-author">{{this.author}}</strong>
-      <span class="comment-date">{{this.createdAt}}</span>
-      <div class="comment-text">{{this.text}}</div>
-    </div>
-    {{/each}}
+    
 
-    <form class="Comment" action="/posts/{{post.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+    <form class="Comment" action="/comments/{{post.id}}" method="POST" enctype="application/x-www-form-urlencoded">
 
       <label for="Comment">Comment</label>
       <input type="text" name="comment" id="Comment" placeholder="Enter Comment Here">
 
       <input type="submit" value="Submit Comment">
     </form>
+
+    {{#each post.comments}}
+    <div class="comment">
+      <strong class="comment-author">{{this.username}}</strong>
+      <span class="comment-date">{{this.createdAt}}</span>
+      <div class="comment-text">{{this.text}}</div>
+    </div>
+    {{/each}}
   </div>
 </main>
