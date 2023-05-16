@@ -119,6 +119,27 @@ router.get('/profile/:id(\\d+)', isLoggedIn, isMyProfile, async function (req, r
     res.status(500).send("Server error");
   }
 });
+router.get('/profile/posts/:id(\\d+)', isLoggedIn,async function (req, res) {
+
+  try {
+    var [rows, fields] = await db.execute(
+      `SELECT id, title, description, video, thumbnail, createdAt FROM posts WHERE id = ?;`,
+      [req.params.id]
+    );
+    var post = rows[0];
+    if (!post) {
+      req.flash("error", `Post not found`);
+      req.session.save(function (err) {
+        return res.redirect('/');
+      });
+    } else {
+      res.render('viewpost', { title: post.title, post: post, css: ["form.css"], css: ["view-comment.css"] });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
 
 router.get('/profile/postvideo', isLoggedIn, function(req, res){
   res.render('postvideo',{ title: 'Post Video', css:["form.css"] })

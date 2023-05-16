@@ -58,21 +58,29 @@ router.post("/create",
 );
 
 
-router.get('/:id(\\d+)', isLoggedIn,async function (req, res) {
-
+router.get('/:id(\\d+)', isLoggedIn, async function (req, res) {
   try {
     var [rows, fields] = await db.execute(
       `SELECT id, title, description, video, thumbnail, createdAt FROM posts WHERE id = ?;`,
       [req.params.id]
     );
+    var [rowss, fieldss] = await db.execute(
+      `SELECT c.id, c.createdAt, c.text, u.username FROM comments c
+      JOIN users u ON c.fk_authorId = u.id
+      WHERE fk_postId = ?
+      ORDER BY createdAt DESC;`,
+      [req.params.id]
+    );
+    var comments = rowss;
     var post = rows[0];
     if (!post) {
-      req.flash("error", `Post not found`);
+      req.flash("error", "Post not found");
       req.session.save(function (err) {
-        return res.redirect('/');
+        if (err) return next(err);
+        res.redirect('/');
       });
     } else {
-      res.render('viewpost', { title: post.title, post: post, css: ["form.css"], css: ["view-comment.css"] });
+      res.render('viewpost', { title: post.title, post: post, comments: comments, css: ["form.css", "view-comment.css"] });
     }
   } catch (err) {
     console.error(err);
@@ -107,14 +115,22 @@ router.get('/postvideo', isLoggedIn, function(req, res){
 })
 
 router.post('/delete/:id', async function(req, res, next) {
-  const id = req.params.id;
+  const postId = req.params.id;
   try {
-    const [result, fields] = await db.execute(
-      `DELETE FROM posts WHERE id = ?`,
-      [id]
-    );
-    req.flash("success", `Post with ID ${id} has been deleted successfully!`);
-    res.redirect("/");
+    // Delete comments associated with the post
+    await db.execute(`DELETE FROM comments WHERE fk_postId = ?`, [postId]);
+
+    // Delete the post
+    const [result, fields] = await db.execute(`DELETE FROM posts WHERE id = ?`, [postId]);
+    if (result && result.affectedRows) {
+      req.flash("success", `Post with ID ${postId} has been deleted successfully`);
+    } else {
+      req.flash("error", `Post with ID ${postId} not found.`);
+    }
+    req.session.save(function (err) {
+      if (err) return next(err);
+      res.redirect("/");
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");

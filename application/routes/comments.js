@@ -3,23 +3,6 @@ var router = express.Router();
 var db = require('../conf/database');
 const { isLoggedIn } = require('../middleware/auth');
 
-router.get('/:postId(\\d+)/comments', async function (req, res) {
-    try {
-      var [rows, fields] = await db.execute(
-        `SELECT c.id, c.createdAt, c.text, u.username FROM comments c
-        JOIN users u ON c.fk_authorId = u.id
-        WHERE fk_postId = ?
-        ORDER BY createdAt DESC;`,
-        [req.params.postId]
-      );
-      var comments = rows;
-      res.render('comments', { title: "Comments", comments: comments });
-    } catch (err) {
-      console.error(err);
-      res.status(500).send("Server error");
-    }
-  });
-
   router.post("/:id", isLoggedIn, async function (req, res, next) {
   var postId = req.params.id;
   var comment = req.body.comment;

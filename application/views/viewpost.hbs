@@ -1,6 +1,6 @@
 <main class="main-content">
   <video class="video-container" controls>
-    <source src="/{{post.video}}" type="video/mp4" />
+    <source src="/{{post.video}}" type="video/mp4" >
   </video>
   <div class="post-info">
     <h2 class="post-title">{{post.title}}</h2>
@@ -23,7 +23,7 @@
       <input type="submit" value="Submit Comment">
     </form>
 
-    {{#each post.comments}}
+    {{#each comments}}
     <div class="comment">
       <strong class="comment-author">{{this.username}}</strong>
       <span class="comment-date">{{this.createdAt}}</span>
