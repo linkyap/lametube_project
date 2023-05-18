@@ -16,7 +16,7 @@ module.exports = {
         if(req.session.user && id == req.session.user.userId){
             next();
         }else{
-            req.flash("error", `This is a private profile 
+            req.flash("error", `This is a profile 
             which isn't yours`);
             req.session.save(function(err){
                 if(err) next(err);

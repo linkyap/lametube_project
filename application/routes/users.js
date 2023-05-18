@@ -151,7 +151,7 @@ router.get('/profile/postvideo', isLoggedIn, function(req, res){
 //   res.redirect('/profile');
 //   })
 
-router.post('/logout', function (req, res, next) {
+router.post('/logout',isLoggedIn, function (req, res, next) {
   req.session.destroy(function (err) {
 
     if (err) {

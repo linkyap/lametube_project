@@ -113,7 +113,7 @@ router.get('/postvideo', isLoggedIn, function(req, res){
   res.render('postvideo',{ title: 'Post Video', css:["form.css"] })
 })
 
-router.post('/delete/:id', async function(req, res, next) {
+router.post('/delete/:id',isLoggedIn, async function(req, res, next) {
   const postId = req.params.id;
   try {
     // Delete comments associated with the post
