@@ -61,14 +61,13 @@ router.post("/create",
 router.get('/:id(\\d+)', isLoggedIn, async function (req, res) {
   try {
     var [rows, fields] = await db.execute(
-      `SELECT id, title, description, video, thumbnail, createdAt FROM posts WHERE id = ?;`,
+      `SELECT id, title, description, video, thumbnail, DAY(createdAt) AS 'day', MONTHNAME(createdAt) AS 'month', YEAR(createdAt) AS 'year' FROM posts WHERE id = ?;`,
       [req.params.id]
     );
     var [rowss, fieldss] = await db.execute(
-      `SELECT c.id, c.createdAt, c.text, u.username FROM comments c
-      JOIN users u ON c.fk_authorId = u.id
-      WHERE fk_postId = ?
-      ORDER BY createdAt DESC;`,
+      `SELECT c.id, DAY(c.createdAt) AS 'day', MONTHNAME(c.createdAt) AS 'month', YEAR(c.createdAt) AS 'year', c.text, u.username FROM comments c      JOIN users u ON c.fk_authorId = u.id
+      WHERE c.fk_postId = ?
+      ORDER BY c.createdAt DESC;`, // Specify table  'c' for the createdAt column
       [req.params.id]
     );
     var comments = rowss;

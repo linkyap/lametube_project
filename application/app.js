@@ -63,7 +63,7 @@ app.use(sessions({
       httpOnly: true,
       secure: false
     }
-}))
+}));
 
 
 app.use(flash());
