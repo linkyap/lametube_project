@@ -1,29 +1,32 @@
 <main class="main-content">
-    <div class="container">
-        <h2>Profile Information</h2>
+  <div class="container">
+    <h2>Profile Information</h2>
 
-        <label for="users username">Username: {{user.username}}</label>
-        <p type="text" name="username" id="users username"></p>
+    <label for="users username">Username: {{user.username}}</label>
+    <p type="text" name="username" id="users username"></p>
 
-        <label for="users usersemail">User's Email: {{user.email}}</label>
-        <p type="text" name="email" id="users useremail"></p>
+    <label for="users usersemail">User's Email: {{user.email}}</label>
+    <p type="text" name="email" id="users useremail"></p>
 
-    </div>
+  </div>
 
-    <section class="profileVids">
-        <label for="Your Post">Your Posts</label>
-        <p type="text" name="Your Posts" id="Your Post"></p>
-        <div id="postThumbnails" class="post-thumbnails"> 
-            {{#each posts}}
-            <a href="/posts/{{this.id}}" target="_self">
-                <img src="/{{this.thumbnail}}" alt="{{this.title}}">
-                <p class="thumbnailTitle">{{this.title}}</p>
-            </a>
-              <form action="/posts/delete/{{this.id}}" method="post">
-                <input type="hidden" name="_method" value="delete">
-                <button class="btn-delete" type="submit" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
-            </form>
-            {{/each}}
+  <section class="profile-videos">
+    <h2>Your Posts</h2>
+    <div class="post-thumbnails">
+      {{#each posts}}
+      <div class="post-card">
+        <div class="post-thumbnail">
+          <a href="/posts/{{this.id}}" target="_self">
+            <img src="/{{this.thumbnail}}" alt="{{this.title}}" border-radius:20px>
+            <p class="thumbnail-title">{{this.title}}</p>
+          </a>
+          <form action="/posts/delete/{{this.id}}" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button class="btn-delete" type="submit" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+          </form>
         </div>
-    </section>
+      </div>
+      {{/each}}
+    </div>
+  </section>
 </main>
