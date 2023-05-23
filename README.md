@@ -18,9 +18,17 @@ Please follow the instructions below and fill in the information requested when 
 # Build/Run Instructions
 
 ## Build Instructions
-1. steps here
-2. steps here
+1. npm install
+2. npm i dotenv
+3. add .env file with info
+4. npm run builddb
 
 ## Run Instructions
-1. steps here
-2. steps here 
+1. npm i express-session
+2. npm i express-mysql-session
+3. npm i express-flash
+4. npm i bcrypt
+5. npm i validator
+6. npm i multer
+7. npm i ffmpeg-static
+8. npm start
