@@ -10,7 +10,9 @@ var db = require('../conf/database');
 router.get('/', async function (req, res, next) {
   try {
     var [posts, fields] = await db.execute(
-      `SELECT id, title, description, video, thumbnail FROM posts;`
+      `SELECT id, title, description, video, thumbnail
+      FROM posts
+      ORDER BY id DESC;`
     );
     if (posts.length === 0) {
       req.flash("error", `No posts available`);
@@ -23,17 +25,17 @@ router.get('/', async function (req, res, next) {
 });;
 
 
-router.get('/login', function(req,res){
-  res.render('login',{ title: 'Login', css:["form.css"]});
+router.get('/login', function (req, res) {
+  res.render('login', { title: 'Login', css: ["form.css"] });
 })
 
-router.get('/postvideo', isLoggedIn, function(req, res){
-  res.render('postvideo',{ title: 'Post Video', css:["form.css"] })
+router.get('/postvideo', isLoggedIn, function (req, res) {
+  res.render('postvideo', { title: 'Post Video', css: ["form.css"] })
 })
 
- 
-router.get('/registration', function(req,res){
-  res.render('registration', { title: 'Registration form',  js:["validation1.js"], css:["form.css"] });
+
+router.get('/registration', function (req, res) {
+  res.render('registration', { title: 'Registration form', js: ["validation1.js"], css: ["form.css"] });
 })
 
 module.exports = router;

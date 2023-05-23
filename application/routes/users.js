@@ -6,14 +6,14 @@ var { isLoggedIn, isMyProfile } = require("../middleware/auth.js")
 const { isUsernameUnique, usernameCheck, passwordCheck, emailCheck, tosCheck, ageCheck, isEmailUnique } = require('../middleware/validation')
 
 // localhost:3000/users/register 
-router.post('/registration', 
-usernameCheck,
-passwordCheck,
-emailCheck,
-tosCheck,
-ageCheck,
-isUsernameUnique,
-isEmailUnique,
+router.post('/registration',
+  usernameCheck,
+  passwordCheck,
+  emailCheck,
+  tosCheck,
+  ageCheck,
+  isUsernameUnique,
+  isEmailUnique,
   async function (req, res, next) {
     var { username, email, password } = req.body;
     //check username unique
@@ -31,9 +31,9 @@ isEmailUnique,
         `INSERT INTO users
     (username,email,password)
      value
-    (?,?,?);`, 
-    [username, email, hashedPassword]
-    );
+    (?,?,?);`,
+        [username, email, hashedPassword]
+      );
 
       //respond  
       if (resultObject && resultObject.affectedRows == 1) {
@@ -109,17 +109,20 @@ router.use(function (req, res, next) {
 router.get('/profile/:id(\\d+)', isLoggedIn, isMyProfile, async function (req, res) {
   try {
     var [posts, fields] = await db.execute(
-      `SELECT id, title, description, video, thumbnail FROM posts WHERE fk_userId = ?;`,
+      `SELECT id, title, description, video, thumbnail
+      FROM posts
+      WHERE fk_userId = ?
+      ORDER BY id DESC;`,
       [req.params.id]
     );
-    
-    res.render('profile', { title: 'Profile page', posts: posts, css: ["thumbnailLink.css"]  });
+
+    res.render('profile', { title: 'Profile page', posts: posts, css: ["thumbnailLink.css"] });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
   }
 });
-router.get('/profile/posts/:id(\\d+)', isLoggedIn,async function (req, res) {
+router.get('/profile/posts/:id(\\d+)', isLoggedIn, async function (req, res) {
 
   try {
     var [rows, fields] = await db.execute(
@@ -141,8 +144,8 @@ router.get('/profile/posts/:id(\\d+)', isLoggedIn,async function (req, res) {
   }
 });
 
-router.get('/profile/postvideo', isLoggedIn, function(req, res){
-  res.render('postvideo',{ title: 'Post Video', css:["form.css"] })
+router.get('/profile/postvideo', isLoggedIn, function (req, res) {
+  res.render('postvideo', { title: 'Post Video', css: ["form.css"] })
 })
 
 //if i have time come back to
@@ -151,7 +154,7 @@ router.get('/profile/postvideo', isLoggedIn, function(req, res){
 //   res.redirect('/profile');
 //   })
 
-router.post('/logout',isLoggedIn, function (req, res, next) {
+router.post('/logout', isLoggedIn, function (req, res, next) {
   req.session.destroy(function (err) {
 
     if (err) {

@@ -1,104 +1,196 @@
+/* Main Content */
 .main-content {
-    display: flex;
+  display: flex;
+  justify-content: space-between;
+  /*  space between content & thumbnails */
+  align-items: flex-start;
+  margin: 20px;
+}
+
+.content-left {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.thumbnails {
+  flex: 0 0 auto;
+  /* keep original width */
+  max-width: 300px;
+}
+
+.thumbnail-item {
+  margin-bottom: 20px;
+  /* spacing between thumbnails */
+}
+
+/* Video Container */
+.video-container {
+  width: 100%;
+  max-width: 1110px;
+  height: auto;
+  margin-right: 364px;
+  border-radius: 20px;
+}
+
+/* Post Info */
+.post-info {
+  margin-top: -20px;
+  text-align: left;
+}
+
+.post-title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.post-author-date {
+  margin-top: -15px;
+  display: flex;
+  align-items: center;
+}
+
+.author {
+  margin: 0px 10px 0 0;
+  font-size: 20px;
+  text-align: left;
+}
+
+.date-posted {
+  margin: 0px 10px 0 0;
+  font-size: 15px;
+  text-align: left;
+}
+
+.post-description {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: justify;
+  margin-left: 20px;
+}
+
+/* Comments */
+.comments {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.comment {
+  margin-bottom: -1px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid #91834b7d;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #b9957a4f;
+}
+
+.comment-author {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comment-date {
+  font-size: 14px;
+  color: #70757a;
+}
+
+.comment-text {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: justify;
+  margin-left: 20px;
+}
+
+/* Comment Form */
+.Comment {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.Comment label {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.Comment input[type="text"] {
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #dfe1e5;
+  border-radius: 4px;
+}
+
+.Comment input[type="submit"] {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.Comment input[type="submit"]:hover {
+  background-color: #0c63e4;
+}
+
+@media screen and (max-width: 768px) {
+
+  /*tablet and smaller screens */
+  .main-content {
     flex-direction: column;
-    align-items: center;
-    margin: 20px;
+    /* vertical */
+    align-items: flex-start;
   }
-  
-  /* Video Container */
+
+  .content-left {
+    margin-right: 0;
+  }
+
+  .thumbnails {
+    max-width: 100%;
+    /* width of container container */
+  }
+
   .video-container {
-    width: 800px;
-    height: 450px;
+    max-width: 100%;
+    /*  video container width */
   }
-  
-  /* Post Info */
-  .post-info {
-    margin-top: 20px;
-    text-align: center;
+
+  .post-info,
+  .post-title,
+  .post-description,
+  .comments {
+    text-align: left;
+    margin: 0 0 20px 0;
   }
-  
-  .post-title {
-    font-size: 32px;
-    font-weight: bold;
-  }
-  
-  .post-author-date {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .author, .date-posted {
-    margin: 0px 10px;
-    font-size: 14px;
-  }
-  
+
   .post-description {
     margin-top: 20px;
-    font-size: 18px;
-    line-height: 1.5;
-    text-align: justify;
+    padding-left: 20px;
   }
-  
-  /* Comments */
-  .comments {
-    margin-top: 40px;
-    width: 800px;
-  }
-  
+
   .comment {
-    margin-bottom: 20px;
+    padding: 5px;
   }
-  
+
   .comment-author {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .comment-date {
-    margin-left: 10px;
     font-size: 14px;
-    color: #70757a;
   }
-  
+
+  .comment-date {
+    font-size: 12px;
+  }
+
   .comment-text {
-    margin-top: 10px;
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: justify;
+    font-size: 14px;
   }
-  
-  /* Comment Form */
-  .Comment {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-  }
-  
-  .Comment label {
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .Comment input[type="text"] {
-    margin-bottom: 20px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #dfe1e5;
-    border-radius: 4px;
-  }
-  
-  .Comment input[type="submit"] {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #1a73e8;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .Comment input[type="submit"]:hover {
-    background-color: #0c63e4;
-  }
+}

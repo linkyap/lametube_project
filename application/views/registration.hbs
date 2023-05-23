@@ -1,28 +1,33 @@
 <main class="main-content">
     <div class="container">
         <h2>Registration Form</h2>
-        <form id="registerr" class="form" method="post" action="/users/registration" method="POST" enctype="application/x-www-form-urlencoded">
+        <form id="registerr" class="form" method="post" action="/users/registration" method="POST"
+            enctype="application/x-www-form-urlencoded">
             <div class="input-group">
                 <label for="username">Create Username</label>
-                <input class="input-text" type="text" name="username" id="username" {{!required}} placeholder="Enter here" onkeyup="validation1()">
+                <input class="input-text" type="text" name="username" id="username" {{!required}}
+                    placeholder="Enter here" onkeyup="validation1()">
                 <small></small>
             </div>
 
             <div class="input-group">
                 <label for="password">Create Password</label>
-                <input class="input-text" type="password" name="password" id="password" {{!required}} placeholder="Password" onkeyup="validation1()">
+                <input class="input-text" type="password" name="password" id="password" {{!required}}
+                    placeholder="Password" onkeyup="validation1()">
                 <small></small>
             </div>
 
             <div class="input-group">
                 <label for="confirm password">Confirm Password</label>
-                <input class="input-text" type="password" name="confirmPassword" id="confirmPassword" {{!required}} placeholder="Confirm Password" onkeyup="validation1()">
+                <input class="input-text" type="password" name="confirmPassword" id="confirmPassword" {{!required}}
+                    placeholder="Confirm Password" onkeyup="validation1()">
                 <small></small>
             </div>
 
             <div class="input-group">
                 <label for="email">Enter email</label>
-                <input class="input-text" type="email" name="email" id="email" {{!required}} placeholder="Enter here" onkeyup="validation1()">
+                <input class="input-text" type="email" name="email" id="email" {{!required}} placeholder="Enter here"
+                    onkeyup="validation1()">
             </div>
 
             <div class="checkbox">

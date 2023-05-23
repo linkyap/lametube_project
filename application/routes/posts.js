@@ -57,21 +57,27 @@ router.post("/create",
 
 );
 
-
 router.get('/:id(\\d+)', isLoggedIn, async function (req, res) {
   try {
     var [rows, fields] = await db.execute(
       `SELECT id, title, description, video, thumbnail, DAY(createdAt) AS 'day', MONTHNAME(createdAt) AS 'month', YEAR(createdAt) AS 'year' FROM posts WHERE id = ?;`,
       [req.params.id]
     );
-    var [rowss, fieldss] = await db.execute(
-      `SELECT c.id, DAY(c.createdAt) AS 'day', MONTHNAME(c.createdAt) AS 'month', YEAR(c.createdAt) AS 'year', c.text, u.username FROM comments c      JOIN users u ON c.fk_authorId = u.id
-      WHERE c.fk_postId = ?
-      ORDER BY c.createdAt DESC;`, // Specify table  'c' for the createdAt column
+
+    var [thumbnailRows, thumbnailFields] = await db.execute(
+      `SELECT thumbnail, title, id FROM posts WHERE thumbnail IS NOT NULL AND thumbnail != '' AND id != ? ORDER BY createdAt DESC LIMIT 10;`,
       [req.params.id]
     );
+
+    var [rowss, fieldss] = await db.execute(
+      `SELECT c.id, DAY(c.createdAt) AS 'day', MONTHNAME(c.createdAt) AS 'month', YEAR(c.createdAt) AS 'year', c.text, u.username FROM comments c JOIN users u ON c.fk_authorId = u.id WHERE c.fk_postId = ? ORDER BY c.createdAt DESC;`,
+      [req.params.id]
+    );
+
     var comments = rowss;
     var post = rows[0];
+    var thumbnails = thumbnailRows;
+
     if (!post) {
       req.flash("error", "Post not found");
       req.session.save(function (err) {
@@ -79,7 +85,7 @@ router.get('/:id(\\d+)', isLoggedIn, async function (req, res) {
         res.redirect('/');
       });
     } else {
-      res.render('viewpost', { title: post.title, post: post, comments: comments, css: ["form.css", "view-comment.css"] });
+      res.render('viewpost', { title: post.title, post: post, comments: comments, thumbnails: thumbnails, css: ["form.css", "view-comment.css"] });
     }
   } catch (err) {
     console.error(err);
@@ -87,33 +93,33 @@ router.get('/:id(\\d+)', isLoggedIn, async function (req, res) {
   }
 });
 
-router.get('/search', async function(req, res, next) {
+router.get('/search', async function (req, res, next) {
   var query = req.query.q;
   if (!query) {
-      return res.redirect('/');
+    return res.redirect('/');
   }
 
   try {
-      var [posts, fields] = await db.execute(
-          `SELECT id, title, description, video, thumbnail FROM posts WHERE title LIKE ? OR description LIKE ?;`,
-          [`%${query}%`, `%${query}%`]
-      );
-      if (posts.length === 0) {
-          req.flash("error", `No posts found for "${query}"`);
-          
-      }
-      res.render('', { title: 'Search results', posts: posts, css: ["thumbnailLink.css"], query: query });
+    var [posts, fields] = await db.execute(
+      `SELECT id, title, description, video, thumbnail FROM posts WHERE title LIKE ? OR description LIKE ?;`,
+      [`%${query}%`, `%${query}%`]
+    );
+    if (posts.length === 0) {
+      req.flash("error", `No posts found for "${query}"`);
+
+    }
+    res.render('', { title: 'Search results', posts: posts, css: ["thumbnailLink.css"], query: query });
   } catch (err) {
-      console.error(err);
-      res.status(500).send("Server error");
+    console.error(err);
+    res.status(500).send("Server error");
   }
 });
 
-router.get('/postvideo', isLoggedIn, function(req, res){
-  res.render('postvideo',{ title: 'Post Video', css:["form.css"] })
+router.get('/postvideo', isLoggedIn, function (req, res) {
+  res.render('postvideo', { title: 'Post Video', css: ["form.css"] })
 })
 
-router.post('/delete/:id',isLoggedIn, async function(req, res, next) {
+router.post('/delete/:id', isLoggedIn, async function (req, res, next) {
   const postId = req.params.id;
   try {
     // Delete comments associated with the post

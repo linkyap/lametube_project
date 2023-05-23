@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('../conf/database');
 const { isLoggedIn } = require('../middleware/auth');
 
-  router.post("/:id", isLoggedIn, async function (req, res, next) {
+router.post("/:id", isLoggedIn, async function (req, res, next) {
   var postId = req.params.id;
   var comment = req.body.comment;
   var userId = req.session.user.userId;

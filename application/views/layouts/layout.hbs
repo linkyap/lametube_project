@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    <link rel="icon" href="/public/favicon.ico" sizes="70x70" type="image/ico">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/style.css">
-    <link rel="stylesheet" href="/public/css/nav.css">
-    <link rel="stylesheet" href="/public/css/dropdownnav.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
 
-    {{#each css}}
-      <link rel="stylesheet" href="/public/css/{{this}}">
-    {{/each}}
+<head>
+  <title>{{title}}</title>
+  <link rel="icon" href="/public/favicon.ico" sizes="70x70" type="image/ico">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/css/style.css">
+  <link rel="stylesheet" href="/public/css/nav.css">
+  <link rel="stylesheet" href="/public/css/dropdownnav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    {{#each js}}
-      <script  defer src="/public/js/{{this}}"></script>
-    {{/each}}
-  </head>
-  <body>
-    {{#if (nonEmptyObject messages)}}
-      {{> flashmessage this}}
-    {{/if}}
-    {{> header}}
-    {{{body}}}
-    {{> footer}}
-  </body>
+
+  {{#each css}}
+  <link rel="stylesheet" href="/public/css/{{this}}">
+  {{/each}}
+
+  {{#each js}}
+  <script defer src="/public/js/{{this}}"></script>
+  {{/each}}
+</head>
+
+<body>
+  {{#if (nonEmptyObject messages)}}
+  {{> flashmessage this}}
+  {{/if}}
+  {{> header}}
+  {{{body}}}
+  {{> footer}}
+</body>
+
 </html>
-  

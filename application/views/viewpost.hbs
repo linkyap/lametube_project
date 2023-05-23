@@ -1,33 +1,43 @@
 <main class="main-content">
-  <video class="video-container" controls>
-    <source src="/{{post.video}}" type="video/mp4" >
-  </video>
-  <div class="post-info">
-    <h2 class="post-title">{{post.title}}</h2>
-    <div class="post-author-date">
-      <strong class="author">{{user.username}}</strong>
-      <p class="date-posted">{{post.month}} {{post.day}}, {{post.year}}</p>
+  <div class="content-left">
+    <video class="video-container" controls>
+      <source src="/{{post.video}}" type="video/mp4">
+    </video>
+    <div class="post-info">
+      <h2 class="post-title">{{post.title}}</h2>
+      <div class="post-author-date">
+        <strong class="author">{{user.username}}</strong>
+        <p class="date-posted">{{post.month}} {{post.day}}, {{post.year}}</p>
+      </div>
+      <p class="post-description">
+        {{post.description}}
+      </p>
     </div>
-    <p class="post-description">
-      {{post.description}}
-    </p>
+    <div class="comments">
+      <form class="Comment" action="/comments/{{post.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+        <label for="Comment">Comment</label>
+        <input type="text" name="comment" id="Comment" placeholder="Enter Comment Here">
+        <input type="submit" value="Submit Comment">
+      </form>
+      {{#each comments}}
+      <div class="comment">
+        <div class="comment-info">
+          <strong class="comment-author">{{this.username}}</strong>
+          <p class="comment-date">{{this.month}} {{this.day}}, {{this.year}}</p>
+        </div>
+        <div class="comment-text">{{this.text}}</div>
+      </div>
+      {{/each}}
+    </div>
   </div>
-  <div class="comments">
-    
-
-    <form class="Comment" action="/comments/{{post.id}}" method="POST" enctype="application/x-www-form-urlencoded">
-
-      <label for="Comment">Comment</label>
-      <input type="text" name="comment" id="Comment" placeholder="Enter Comment Here">
-
-      <input type="submit" value="Submit Comment">
-    </form>
-
-    {{#each comments}}
-    <div class="comment">
-      <strong class="comment-author">{{this.username}}</strong>
-     <span class="comment-date">{{this.month}} {{this.day}}, {{this.year}}</span>
-      <div class="comment-text">{{this.text}}</div>
+  <div class="thumbnails">
+    <h3>Recent Posts</h3>->
+    {{#each thumbnails}}
+    <div class="thumbnail-item">
+      <a href="/posts/{{this.id}}" target="_self">
+        <img src="/{{this.thumbnail}}" alt="{{this.title}}" style=border-radius:15px>
+        <p class="thumbnail-title">{{this.title}}</p>
+      </a>
     </div>
     {{/each}}
   </div>

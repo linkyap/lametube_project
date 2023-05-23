@@ -2,12 +2,10 @@
     <h1>CSC 317 Website</h1>
     <nav>
         <ul style="list-style: none;">
-            <li><a href="/"><i class="fa fa-home" style="font-size:24px"> Home</i></a></li>
+            <li><a href="/"><i class="fa fa-home" style="font-size:24px"> </i>Home</a></li>
             <li><a href="postvideo"><i class="fa fa-plus-square" aria-hidden="true"></i> Create Post</a></li>
-            {{!-- <li><a href="viewpost">Browse Posts</a></li> --}}
             {{#if isLoggedIn}}
             {{> userdropdown}}
-            {{!-- <li><a href="profile">Profile</a></li> appears to be no longer needed--}}
             {{else}}
             <li><a href="login">Login<i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
             {{/if}}

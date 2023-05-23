@@ -1,54 +1,53 @@
 <div id="flash-message">
-    {{#if messages.error}}
-    <div class="alert alert-danger">{{messages.error}}</div>
-    {{else}}
-    <div class="alert alert-success">{{messages.success}}</div>
-    {{/if}}
+  {{#if messages.error}}
+  <div class="alert alert-danger">{{messages.error}}</div>
+  {{else}}
+  <div class="alert alert-success">{{messages.success}}</div>
+  {{/if}}
 </div>
 
 <style>
-    .alert {
-  padding: 15px;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
-  transition: opacity 0.5s ease-in-out;
-}
+  .alert {
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
+  }
 
-.alert-danger {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-}
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+  }
 
-.alert-success {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
-}
+  .alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+  }
 
-.alert-hide{
+  .alert-hide {
     opacity: 0;
-}
+  }
 
-#flash-message {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-
+  #flash-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
 </style>
 <script>
-    const flashMessage = document.querySelector('#flash-message .alert');
+  const flashMessage = document.querySelector('#flash-message .alert');
 
-// If the flash message element exists, add the hide class after a delay of 3 seconds
-if (flashMessage) {
-  setTimeout(() => {
-    flashMessage.classList.add('alert-hide');
-  }, 3000);
-}
+  // If the flash message element exists, add the hide class after a delay of 3 seconds
+  if (flashMessage) {
+    setTimeout(() => {
+      flashMessage.classList.add('alert-hide');
+    }, 3000);
+  }
 </script>

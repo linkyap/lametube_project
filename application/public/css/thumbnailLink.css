@@ -49,18 +49,19 @@
 .btn-delete:hover {
   background-color: darkred;
 }
+
 @media only screen and (max-width: 767px) {
   .post-thumbnail {
     position: relative;
     padding-top: 20px;
     margin-bottom: 20px;
   }
-  
+
   .btn-delete {
     opacity: 1;
-    
+
   }
-  
+
   .btn-delete:hover {
     opacity: 1;
   }
