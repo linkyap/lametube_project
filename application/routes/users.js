@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt');
 var { isLoggedIn, isMyProfile } = require("../middleware/auth.js")
 const { isUsernameUnique, usernameCheck, passwordCheck, emailCheck, tosCheck, ageCheck, isEmailUnique } = require('../middleware/validation')
 
-// localhost:3000/users/register 
+// localhost:/users/register 
 router.post('/registration',
   usernameCheck,
   passwordCheck,
@@ -57,7 +57,7 @@ router.post('/registration',
     }
   });
 
-// localhost:3000/users/login
+// localhost:/users/login
 router.post('/login', async function (req, res, next) {
   const { username, password } = req.body;
 
